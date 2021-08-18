@@ -32,11 +32,12 @@ jobs:
         run: |
           go build -v -o helloci .
 
-      - name: Publish Docker
-        uses: elgohr/Publish-Docker-Github-Action@2.7
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: ccr.ccs.tencentyun.com/marmotedu/helloci:beta
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          registry: ccr.ccs.tencentyun.com
-          dockerfile: Dockerfile
+          name: ccr.ccs.tencentyun.com/marmotedu/helloci:beta  # docker image 的名字
+          username: ${{ secrets.DOCKER_USERNAME }} # 用户名
+          password: ${{ secrets.DOCKER_PASSWORD }} # 密码
+          registry: ccr.ccs.tencentyun.com # 腾讯云Registry
+          dockerfile: Dockerfile # 指定 Dockerfile 的位置
+          tag_names: true # 是否将 release 的 tag 作为 docker image 的 tag
