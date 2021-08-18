@@ -31,3 +31,12 @@ jobs:
       - name: Build
         run: |
           go build -v -o helloci .
+
+      - name: Publish Docker
+        uses: elgohr/Publish-Docker-Github-Action@2.7
+        with:
+          name: ccr.ccs.tencentyun.com/marmotedu/helloci:beta
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: ccr.ccs.tencentyun.com
+          dockerfile: Dockerfile
