@@ -6,5 +6,6 @@ LABEL maintainer="Lingfei Kong" \
 WORKDIR /opt/helloci
 
 COPY helloci /opt/helloci
+RUN chmod +x /opt/helloci
 
-CMD ["/opt/helloci"]
+CMD ["/opt/helloci/helloci"]
